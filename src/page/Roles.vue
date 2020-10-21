@@ -80,6 +80,7 @@
         default-expand-all
         :default-checked-keys="checkedKeys"
         ref="tree"
+        v-if="setAuthDialogVisible"
       ></el-tree>
       <span slot="footer" class="dialog-footer">
         <el-button @click="setAuthDialogVisible = false">取 消</el-button>
@@ -130,17 +131,16 @@ export default {
       });
     },
     setAuth(role){
-      // console.log(role);
       this.roleId=role.id
       this.keyLeaf(role,this.checkedKeys)
       console.log(this.checkedKeys);
       this.setAuthDialogVisible=true
 
-      // this.$refs.tree.$forceUpdate()
 
     },
     resetCheckedKeys(){
       this.checkedKeys=[]
+      // this.$refs.tree.setCheckedKeys([])
     },
     keyLeaf(node,arr){
       if(!node.children){
