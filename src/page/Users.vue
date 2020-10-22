@@ -38,7 +38,7 @@
             <el-button type="primary" icon="el-icon-edit" @click="edit(scope.row.id)"></el-button>
             <el-button type="primary" icon="el-icon-delete" @click="deleteUser(scope.row.id)"></el-button>
             <el-tooltip class="item" effect="dark" content="分配角色" placement="top-end" :enterable="false">
-              <el-button type="primary" icon="el-icon-s-tools"></el-button>
+              <el-button type="primary" icon="el-icon-s-tools" @click="setRole(scope.row)"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -110,10 +110,33 @@
         </div>
     </el-dialog>
 
+  <!-- 分配角色对话框 -->
+    <el-dialog
+      title="分配角色"
+      :visible.sync="setRoleDialogVisible"
+      width="30%"
+      >
+      <p>姓名:{{userInfo.username}}</p>
+      <p>角色:{{userInfo.role_name}}</p>
+      <p>分配角色:
+        <el-select v-model="roleId" placeholder="请选择">
+            <el-option
+              v-for="item in roles"
+              :key="item.id"
+              :label="item.roleName"
+              :value="item.id">
+            </el-option>
+          </el-select>
+      </p>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="setRoleDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="changeRole">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 <script>
-import {users,userStateChange,addOneUser,getOneUser,editOneUser,deleteOneUser} from '../api/api'
+import {users,userStateChange,addOneUser,getOneUser,editOneUser,deleteOneUser,getAllRoles} from '../api/api'
 
 export default {
   name:'Users',
@@ -136,6 +159,11 @@ export default {
 
     };
     return {
+      setRoleDialogVisible:false,
+      userInfo:{},
+      roleId:'',
+      userId:'',
+      roles:[],
       queryInfo:{
         query:'',
         pagenum:1,
@@ -280,6 +308,27 @@ export default {
           message: '已取消删除'
         });          
       });
+    },
+    async setRole(user){
+      this.setRoleDialogVisible=true
+      // console.log(user);
+      this.userInfo=user
+      this.userId=user.id
+      let {data:res} = await getAllRoles()
+      // console.log(res);
+      this.roles=res
+      
+    },
+    changeRole(){
+      this.setRoleDialogVisible = false
+      const req_data={
+        userId:this.userId,
+        roleId:this.roleId
+      }
+      console.log(req_data);
+      this.roleId=''
+      this.userInfo={}
+
     }
     
   },
@@ -296,5 +345,8 @@ export default {
   .add_form_btns{
     display:flex;
     justify-content:flex-end;
+  }
+  .el-dialog p{
+    margin: 5px 0px;
   }
 </style>
