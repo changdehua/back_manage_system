@@ -5,65 +5,67 @@
       <el-breadcrumb-item>权限管理</el-breadcrumb-item>
       <el-breadcrumb-item>角色列表</el-breadcrumb-item>
     </el-breadcrumb>
-  <el-row>
-    <el-col :span="24">
-      <el-button type="primary">添加角色</el-button>
-    </el-col>
-  </el-row>
-
-
-  <el-table :data="roles"
-            style="width: 100%"
-            stripe
-            border
-            >
-    <el-table-column type="expand"
-    width="30px"
-    >
-    <template slot-scope="scope">
-      <el-row v-for="(item1,i1) in scope.row.children" :key="item1.id" :class="{'bb':true,'bt':i1===0,'fc':true}">
-        <el-col :span="6">
-          <el-tag closable @close="deleteAuth(scope.row,item1.id)">{{item1.authName}}</el-tag>
-          <span class="el-icon-caret-right"></span>
+    <el-card>
+      <el-row>
+        <el-col :span="24">
+          <el-button type="primary">添加角色</el-button>
         </el-col>
-        <el-col :span="18">
-          <el-row v-for="(item2,i2) in item1.children" :key="item2.id" :class="{'bb':i2!==(item1.children.length-1)}">
+      </el-row>
+
+
+      <el-table :data="roles"
+                style="width: 100%"
+                stripe
+                border
+                >
+        <el-table-column type="expand"
+        width="30px"
+        >
+        <template slot-scope="scope">
+          <el-row v-for="(item1,i1) in scope.row.children" :key="item1.id" :class="{'bb':true,'bt':i1===0,'fc':true}">
             <el-col :span="6">
-              <el-tag type="success" closable @close="deleteAuth(scope.row,item2.id)">{{item2.authName}}</el-tag>
+              <el-tag closable @close="deleteAuth(scope.row,item1.id)">{{item1.authName}}</el-tag>
               <span class="el-icon-caret-right"></span>
             </el-col>
             <el-col :span="18">
-              <el-tag type="warning" v-for="(item3,i3) in item2.children" :key="item3.id" class="mr" closable @close="deleteAuth(scope.row,item3.id)">{{item3.authName}}</el-tag>
+              <el-row v-for="(item2,i2) in item1.children" :key="item2.id" :class="{'bb':i2!==(item1.children.length-1)}">
+                <el-col :span="6">
+                  <el-tag type="success" closable @close="deleteAuth(scope.row,item2.id)">{{item2.authName}}</el-tag>
+                  <span class="el-icon-caret-right"></span>
+                </el-col>
+                <el-col :span="18">
+                  <el-tag type="warning" v-for="(item3) in item2.children" :key="item3.id" class="mr" closable @close="deleteAuth(scope.row,item3.id)">{{item3.authName}}</el-tag>
+                </el-col>
+              </el-row>
             </el-col>
           </el-row>
-        </el-col>
-      </el-row>
-    </template> 
-    </el-table-column>
+        </template> 
+        </el-table-column>
 
-    <el-table-column type="index"
-                     label="#"
-                    > 
-    </el-table-column>
-    <el-table-column prop="roleName"
-                     label="角色名称"
-                     >
-    </el-table-column>
-    <el-table-column prop="roleDesc"
-                     label="角色描述"
-                     >
-    </el-table-column>
-    <el-table-column label="操作" width="290px">
-      <template slot-scope="scope">
-        <div>
-          <!-- {{ scope.row }} -->
-          <el-button size="mini" type="primary" icon="el-icon-edit">编辑</el-button>
-          <el-button size="mini" type="danger" icon="el-icon-delete">删除</el-button>
-          <el-button size="mini" type="warning" icon="el-icon-setting" @click="setAuth(scope.row)">分配权限</el-button>
-        </div>
-      </template>
-    </el-table-column>
-  </el-table>
+        <el-table-column type="index"
+                        label="#"
+                        > 
+        </el-table-column>
+        <el-table-column prop="roleName"
+                        label="角色名称"
+                        >
+        </el-table-column>
+        <el-table-column prop="roleDesc"
+                        label="角色描述"
+                        >
+        </el-table-column>
+        <el-table-column label="操作" width="290px">
+          <template slot-scope="scope">
+            <div>
+              <!-- {{ scope.row }} -->
+              <el-button size="mini" type="primary" icon="el-icon-edit">编辑</el-button>
+              <el-button size="mini" type="danger" icon="el-icon-delete">删除</el-button>
+              <el-button size="mini" type="warning" icon="el-icon-setting" @click="setAuth(scope.row)">分配权限</el-button>
+            </div>
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-card>
 
   <!-- 对话框 -->
     <el-dialog

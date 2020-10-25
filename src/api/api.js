@@ -24,8 +24,11 @@ export const menus=params=>{
   return axios.get(joinObj('menus',params))
 }
 
+// export const users=params=>{
+//   return axios.get(joinObj('users',params))
+// }
 export const users=params=>{
-  return axios.get(joinObj('users',params))
+  return axios.get('users',{params:params})
 }
 
 export const userStateChange=params=>{
@@ -54,4 +57,13 @@ export const getAllRights=(params)=>{
 
 export const getAllRoles=(params)=>{
   return axios.get(`getAllRoles`)
+}
+
+
+export const getAllCates=(params)=>{
+  return axios.get(`getGoodCates`,{params:params})
+}
+
+export const getParentCates=(params)=>{
+  return axios.get(`getParentsCates`,{params:params})
 }
