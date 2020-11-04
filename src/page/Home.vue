@@ -1,14 +1,15 @@
 <template>
-  <el-container>
+  <el-container class="container">
     <el-header>
       <h3>后台管理系统</h3>
+      <!-- <h2>{{active_path}}</h2> -->
       <el-button type="info" @click="logout">退出</el-button>
     </el-header>
     <el-container>
       <el-aside :width="isCollapse?'64px':'200px'">
         <div class="toggle-button" @click="toggleMenus">|||</div>
         <el-menu
-          :default-active="$route.path"
+          :default-active="active_path"
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
@@ -79,26 +80,46 @@ export default {
   },
   created(){
     this.getMenus()
-  }
+  },
+  computed: {
+    active_path(){
+      return this.$route.path.match(/^\/[a-z]*/)[0]
+    }
+  },
 }
 </script>
 <style lang="less" scoped>
-  .el-container{
+  .el-container.container{
     height: 100%;
+    flex-direction: column;
     .el-header{
+      position: fixed;
+      top:0px;
+      left:0px;
+      right: 0px;
       background-color: #B3C0D1;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      height: 60px;
     }
-    .el-aside{
-      background-color: #D3DCE6;
+    .el-container{
+
+      .el-aside{
+        background-color: #D3DCE6;
+        position: fixed;
+        top:60px;
+
       .el-menu{
-        border-right: none;
-      } 
-    }
-    .el-main{
-      background-color: #E9EEF3;
+          border-right: none;
+        } 
+      }
+      .el-main{
+        background-color: #E9EEF3;
+        margin-left: 200px;
+        margin-top: 60px;
+      }
+
     }
     .toggle-button{
       background-color: rgb(166, 172, 177);

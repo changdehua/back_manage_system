@@ -53,7 +53,6 @@
                       clearable
                       @keyup.enter.native="handleInputConfirm(scope.row)"
                       @blur="handleInputConfirm(scope.row)"
-                      
                     >
                     </el-input>
                     <el-button v-else class="button-new-tag" size="small" @click="showInput(scope.row)">+ New Tag</el-button>

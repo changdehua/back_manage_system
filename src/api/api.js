@@ -71,3 +71,15 @@ export const getParentCates=(params)=>{
 export const getCateByIdAndType=(params)=>{
   return axios.get(`getCate/${params.id}/${params.type}`)
 }
+
+export const getGoods=(params)=>{
+  return axios.get(`goods`,{params:params})
+}
+
+export const getCateAttrs=(params)=>{
+  return axios.get(`cate/${params.id}/attrs`)
+}
+
+export const getCateProps=(params)=>{
+  return axios.get(`cate/${params.id}/props`)
+}

@@ -17,6 +17,8 @@ const routes = [
     {path:'/roles',component:()=>import('../page/Roles'),name:'Roles'},
     {path:'/categories',component:()=>import('../page/GoodCates'),name:'GoodCate'},
     {path:'/params',component:()=>import('@/page/GoodParams'),name:'GoodParams'},
+    {path:'/goods',component:()=>import('@/page/GoodList'),name:'GoodList'},
+    {path:'/goods/add',component:()=>import('@/page/GoodAdd'),name:'GoodAdd'},
   ],redirect:'/welcome'}
 ]
 
