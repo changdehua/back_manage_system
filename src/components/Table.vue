@@ -23,7 +23,7 @@
           <div>
             <!-- {{ scope.row }} -->
             <slot :name="item1.slotName" :slot_data="scope.row">
-              <!-- {{scope.row}} -->
+            <!-- {{scope.row}} -->
             </slot>
           </div>
         </template>

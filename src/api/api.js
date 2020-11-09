@@ -83,3 +83,16 @@ export const getCateAttrs=(params)=>{
 export const getCateProps=(params)=>{
   return axios.get(`cate/${params.id}/props`)
 }
+
+export const getOrders=(params)=>{
+  return axios.get(`orders`,{params:params})
+}
+
+export const getproCities=(params)=>{
+  return axios.get(`proCities`,{params:params})
+}
+
+
+export const getLogistics=(params)=>{
+  return axios.get(`logistics/${params.id}`)
+}

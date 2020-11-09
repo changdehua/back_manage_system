@@ -97,7 +97,7 @@
   </div>
 </template>
 <script>
-import BreadCcrumb from  '../components/BreadCrumb'
+import BreadCrumb from  '../components/BreadCrumb'
 import {getAllCates,getCateAttrs,getCateProps} from '../api/api'
 export default {
   name:'GoodsAdd',
@@ -218,7 +218,7 @@ export default {
     }
   },
   components:{
-    'bread-crumb':BreadCcrumb
+    'bread-crumb':BreadCrumb
   },
   created(){
     this.getCates()

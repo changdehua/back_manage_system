@@ -19,6 +19,7 @@ const routes = [
     {path:'/params',component:()=>import('@/page/GoodParams'),name:'GoodParams'},
     {path:'/goods',component:()=>import('@/page/GoodList'),name:'GoodList'},
     {path:'/goods/add',component:()=>import('@/page/GoodAdd'),name:'GoodAdd'},
+    {path:'/orders',component:()=>import('@/page/Order'),name:'Order'},
   ],redirect:'/welcome'}
 ]
 
