@@ -20,6 +20,7 @@ const routes = [
     {path:'/goods',component:()=>import('@/page/GoodList'),name:'GoodList'},
     {path:'/goods/add',component:()=>import('@/page/GoodAdd'),name:'GoodAdd'},
     {path:'/orders',component:()=>import('@/page/Order'),name:'Order'},
+    {path:'/statistics',component:()=>import('@/page/Report'),name:'Report'},
   ],redirect:'/welcome'}
 ]
 

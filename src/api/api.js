@@ -96,3 +96,8 @@ export const getproCities=(params)=>{
 export const getLogistics=(params)=>{
   return axios.get(`logistics/${params.id}`)
 }
+
+
+export const getReports=(params)=>{
+  return axios.get(`report`)
+}
