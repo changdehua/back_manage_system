@@ -1,6 +1,8 @@
 import axios from 'axios'
 import router from '../router';
 import Vue from 'vue';
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css';
 
 const instance=axios.create({
   baseURL:'http://localhost:5000',
@@ -10,6 +12,7 @@ const instance=axios.create({
 
 instance.interceptors.request.use(config=>{
   // console.log(config);
+  NProgress.start()
   const token=localStorage.getItem('token')||sessionStorage.getItem('token')
   if(config.url==='/login'){
 
@@ -30,6 +33,7 @@ err=>{
 
 
 instance.interceptors.response.use(res=>{
+  NProgress.done()
   switch(res.data.status){
     case 1:
       Vue.prototype.$message({
