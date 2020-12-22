@@ -25,3 +25,5 @@ new Vue({
 
 
 console.log('good_cate');
+
+console.log('hahahahahahh');
