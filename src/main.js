@@ -24,6 +24,5 @@ new Vue({
 }).$mount('#app')
 
 
-console.log('good_cate');
 
 console.log('hahahahahahh');
