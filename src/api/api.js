@@ -17,33 +17,53 @@ function joinObj(url,params){
 
 
 export const login=params=>{
-  return axios.post('/login',params)
+  return axios.post('login',params)
 }
 
 export const menus=params=>{
-  return axios.get(joinObj('/menus',params))
+  return axios.get(joinObj('menus',params))
 }
 
+// export const users=params=>{
+//   return axios.get(joinObj('users',params))
+// }
 export const users=params=>{
-  return axios.get(joinObj('/users',params))
+  return axios.get('users',{params:params})
 }
 
 export const userStateChange=params=>{
-  return axios.put(`/changeUser/${params.id}/${params.mg_state}`)
+  return axios.put(`changeUser/${params.id}/${params.mg_state}`)
 }
 
 export const addOneUser=params=>{
-  return axios.post('/addUser',params)
+  return axios.post('addUser',params)
 }
 
 export const getOneUser=params=>{
-  return axios.get('/getUserById/'+params)
+  return axios.get('getUserById/'+params)
 }
 
 export const editOneUser=(id,params)=>{
-  return axios.put(`/editOneUser/${id}`,params)
+  return axios.put(`editOneUser/${id}`,params)
 }
 
 export const deleteOneUser=(params)=>{
   return axios.delete(`/deleteUserById/${params}`)
+}
+
+export const getAllRights=(params)=>{
+  return axios.get(`getAllRights/${params}`)
+}
+
+export const getAllRoles=(params)=>{
+  return axios.get(`getAllRoles`)
+}
+
+
+export const getAllCates=(params)=>{
+  return axios.get(`getGoodCates`,{params:params})
+}
+
+export const getParentCates=(params)=>{
+  return axios.get(`getParentsCates`,{params:params})
 }

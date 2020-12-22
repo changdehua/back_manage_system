@@ -8,6 +8,8 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/main.less'
 
+import ZkTable from 'vue-table-with-tree-grid'
+Vue.component('TreeGridTable', ZkTable)
 Vue.use(ElementUI)
 // import antd from 'ant-design-vue'
 // import 'ant-design-vue/dist/antd.css'
@@ -21,4 +23,5 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-console.log('user');
+
+console.log('good_cate');
