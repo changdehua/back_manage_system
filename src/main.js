@@ -27,3 +27,5 @@ new Vue({
 
 console.log('hahahahahahh');
 console.log('2222hahahahahahh');
+
+alert('haha')
